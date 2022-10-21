@@ -29,7 +29,21 @@ export const useNoteStore = defineStore('notes', () => {
     },
   ]);
 
+  const searchTerm = ref('')
+  // 定义搜索方法（getters）
+  const searchedNotes = computed(() => {
+    if(searchTerm.value === ''){
+      return notes.value
+    } else {
+      return notes.value.filter( note => {
+        return note.title.includes(searchTerm.value)
+      })
+    }
+  })
+
   return {
     notes,
+    searchTerm,
+    searchedNotes
   };
 })
