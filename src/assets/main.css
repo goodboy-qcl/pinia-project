@@ -8,7 +8,7 @@
 }
 
 
-input, select, template {
+input, select, textarea {
   width: 100%;
   border: 1px solid hsl(0, 0%, 90%);
   border-radius: 4px;
