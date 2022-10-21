@@ -2,6 +2,9 @@
 import SearchNote from "./components/SearchNote.vue";
 import NoteList from "./components/NoteList.vue";
 import AddNote from "./components/AddNote.vue";
+import { useUserStore } from "./stores/user";
+
+const userStore = useUserStore();
 </script>
 
 <template>
@@ -10,6 +13,8 @@ import AddNote from "./components/AddNote.vue";
     <SearchNote />
     <NoteList />
     <AddNote />
+
+    <p class="user">当前用户：{{ userStore.user.name }}</p>
   </main>
 </template>
 
@@ -21,5 +26,10 @@ main {
   display: grid;
   justify-items: center;
   padding: 48px 0;
+}
+
+.user {
+  margin-top: 24px;
+  justify-self: start;
 }
 </style>
