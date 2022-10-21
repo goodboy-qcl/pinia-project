@@ -1,14 +1,18 @@
 <template>
   <div class="noteList">
-    <div v-for="n in 6" class="note" :key="n">
-      <h2>笔记标题{{ n }}</h2>
+    <div v-for="item in noteStore.notes" class="note" :key="item.id">
+      <h2>笔记标题{{ item.title }}</h2>
       <article>
-        <p>这是笔记内容 {{ n }}</p>
+        <p>这是笔记内容 {{ item.content }}</p>
       </article>
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import { useNoteStore } from '../stores/note';
+// 在组件中访问pinia状态
+const noteStore = useNoteStore();
+</script>
 <style scoped>
 .noteList {
   margin: 48px 0;
