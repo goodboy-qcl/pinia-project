@@ -29,10 +29,23 @@ import { useNoteStore } from "../stores/note";
       return
     }
     // 直接修改状态
-    noteStore.notes.push({
-      id: noteStore.notes.length,
-      title: note.title,
-      content: note.content
+    // noteStore.notes.push({
+    //   id: noteStore.notes.length,
+    //   title: note.title,
+    //   content: note.content
+    // })
+
+    // 使用$patch同时修改多个状态
+    noteStore.$patch({
+      notes: [
+        ...noteStore.notes,
+        {
+          id: noteStore.notes.length,
+          title: note.title,
+          content: note.content
+        }
+      ],
+      searchTerm: ''
     })
 
     note.title = ''
