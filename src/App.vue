@@ -5,6 +5,7 @@ import AddNote from "./components/AddNote.vue";
 import { useUserStore } from "./stores/user";
 
 const userStore = useUserStore();
+console.log(userStore.theme)
 </script>
 
 <template>
