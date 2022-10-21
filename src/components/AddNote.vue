@@ -24,7 +24,7 @@ import { useNoteStore } from "../stores/note";
   * @author 作者 on qcl 2022-10-21
   */
   function addNote () {
-    if (note.title || note.content) {
+    if (!note.title || !note.content) {
       alert(`${note.title?'请输入笔记内容':'请输入笔记标题'}`)
       return
     }
