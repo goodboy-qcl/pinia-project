@@ -41,9 +41,28 @@ export const useNoteStore = defineStore('notes', () => {
     }
   })
 
+  /**
+  * @description: 添加笔记 （Actions修改状态）
+  * @author 作者 on 邱灿磊 2022-10-21
+  * @param { title } string 标题
+  * @param { content } content 内容
+  */
+  async function addNote (title, content) {
+    setTimeout(()=>{
+      notes.value.push({
+        id: notes.value.length + 1,
+        title,
+        content
+      })
+    }, 2000)
+    
+    searchTerm.value = ''
+  }
+
   return {
     notes,
     searchTerm,
-    searchedNotes
+    searchedNotes,
+    addNote
   };
 })

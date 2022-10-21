@@ -30,23 +30,26 @@ import { useNoteStore } from "../stores/note";
     }
     // 直接修改状态
     // noteStore.notes.push({
-    //   id: noteStore.notes.length,
+    //   id: noteStore.notes.length + 1,
     //   title: note.title,
     //   content: note.content
     // })
 
     // 使用$patch同时修改多个状态
-    noteStore.$patch({
-      notes: [
-        ...noteStore.notes,
-        {
-          id: noteStore.notes.length,
-          title: note.title,
-          content: note.content
-        }
-      ],
-      searchTerm: ''
-    })
+    // noteStore.$patch({
+    //   notes: [
+    //     ...noteStore.notes,
+    //     {
+    //       id: noteStore.notes.length + 1,
+    //       title: note.title,
+    //       content: note.content
+    //     }
+    //   ],
+    //   searchTerm: ''
+    // })
+
+    // 使用 action 方法修改
+    noteStore.addNote(note.title, note.content)
 
     note.title = ''
     note.content = ''
