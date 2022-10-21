@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import { useUserStore } from './user';
 
 export const useNoteStore = defineStore('notes', () => {
   const notes = ref([
@@ -41,6 +42,8 @@ export const useNoteStore = defineStore('notes', () => {
     }
   })
 
+  const userStore = useUserStore()
+
   /**
   * @description: 添加笔记 （Actions修改状态）
   * @author 作者 on 邱灿磊 2022-10-21
@@ -48,14 +51,16 @@ export const useNoteStore = defineStore('notes', () => {
   * @param { content } content 内容
   */
   async function addNote (title, content) {
-    setTimeout(()=>{
-      notes.value.push({
-        id: notes.value.length + 1,
-        title,
-        content
-      })
-    }, 2000)
-    
+    // 登录之后才能新增笔记
+    if(userStore.isLoggedIn()) {
+      setTimeout(()=>{
+        notes.value.push({
+          id: notes.value.length + 1,
+          title,
+          content
+        })
+      }, 2000)
+    }
     searchTerm.value = ''
   }
 
