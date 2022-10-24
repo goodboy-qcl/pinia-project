@@ -1,2 +1,2 @@
 # pinia-project
-学习Pinia
+这是一个学习Pinia的笔记本例子
